@@ -1,0 +1,82 @@
+body {
+  background: #fe8c00; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f83600,
+    #fe8c00
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f83600,
+    #fe8c00
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+  font-family: sans-serif;
+}
+main {
+  justify-content: center;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  flex-wrap: wrap;
+}
+.section1 {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+}
+h1 {
+  text-align: center;
+}
+.ficha {
+  height: 100px;
+  width: 100px;
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+  border: 0px;
+  border-radius: 5px;
+}
+.ficha:hover {
+  cursor: pointer;
+  background-color: antiquewhite;
+  transform: rotate(3deg);
+  transition: 0.2s;
+}
+.fichaCorrecta{
+    background-color: rgb(40, 159, 120);
+}
+.fichaCorrecta:hover{
+    background-color: rgb(40, 159, 120);
+    cursor: not-allowed;
+}
+.fichaIncorrecta{
+    background-color: rgb(159, 40, 70);
+    
+
+}
+.fichaIncorrecta:hover{
+    background-color: rgb(159, 40, 70);
+    cursor: not-allowed;
+}
+.section2 {
+  background-color: rgba(255, 255, 255, 0.5);
+    margin-top: 20px;
+  border-radius: 10px;
+  width: 250px;
+  height: 400px;
+  padding: 0 20px;
+}
+
+.estadisticas {
+  border: 1px solid white;
+  height: 105px;
+  border-radius: 8px;
+  padding: 8px 20px;
+  box-sizing: border-box;
+}
+
+footer {
+  text-align: center;
+}
