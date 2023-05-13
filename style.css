@@ -1,34 +1,50 @@
 body {
-  background: #fe8c00; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #f83600,
-    #fe8c00
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #f83600,
-    #fe8c00
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin: 0px;
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
   color: white;
+  background-color: aliceblue;
   font-family: sans-serif;
 }
-.principal {
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-.section1 {
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 10px 10px 10px 10px;
-  border-radius: 10px;
+header {
+  margin: 0px;
+  background-color: rgba(50, 50, 50, 0.3);
+  padding: 20px 0px 5px 0px;
 }
 h1 {
   text-align: center;
 }
+.msj-Ganaste {
+  background-color: darkgreen;
+  width: 100%;
+  text-align: center;
+  padding: 5px 5px;
+  margin: 10px 0px 0px 0px;
+  display: none;
+  max-width: 66%;
+}
+
+.displayNone {
+  display: none;
+}
+.principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  flex-direction: column;
+}
+.section1 {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+}
+
 .ficha {
   height: 100px;
   width: 100px;
@@ -40,79 +56,140 @@ h1 {
 }
 .ficha:hover {
   cursor: pointer;
-  background-color: antiquewhite;
-  transform: rotate(3deg);
+  background-color: rgb(150, 150, 150);
   transition: 0.2s;
 }
-.fichaCorrecta{
-    background-color: rgb(40, 159, 120);
+.fichaSeleccionada{
+    background-color: rgb(150, 150, 150);
 }
-.fichaCorrecta:hover{
-    background-color: rgb(40, 159, 120);
-    cursor: not-allowed;
-}
-.fichaIncorrecta{
-    background-color: rgb(159, 40, 70);
-    
 
+.fichaCorrecta {
+  background-color: rgb(34, 177, 129);
 }
-.fichaIncorrecta:hover{
-    background-color: rgb(159, 40, 70);
-    cursor: not-allowed;
+.fichaCorrecta:hover {
+  background-color: rgb(32, 135, 101);
+  cursor: not-allowed;
+}
+.fichaIncorrecta {
+  background-color: rgb(224, 48, 92);
+}
+.fichaIncorrecta:hover {
+  background-color: rgb(159, 40, 70);
+  cursor: not-allowed;
 }
 .section2 {
-  background-color: rgba(255, 255, 255, 0.5);
-    margin-top: 20px;
+  margin-top: 5px;
   border-radius: 10px;
-  width: 250px;
-  height: 400px;
-  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .estadisticas {
-  border: 1px solid white;
-  height: 105px;
+  border: 1px solid rgb(207, 207, 207);
   border-radius: 8px;
-  padding: 8px 20px;
+  padding: 8px;
   box-sizing: border-box;
+  font-size: 14px;
+  vertical-align: middle;
+  width: 120px;
+  text-align: center;
+}
+.timer {
+  color: rgb(0, 186, 22);
+  width: 160px;
+  font-weight: bold;
+}
+.ultimos10 {
+  color: rgb(254, 6, 6);
+  transition: 10s;
+}
+.ultimos20 {
+  color: rgb(212, 198, 0);
+  transition: 10s;
 }
 
-.botonera{
+.primeros30 {
+  color: rgb(0, 186, 22);
+  transition: 10s;
+}
+
+.botonera {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.btn-reiniciar{
+.btn-reiniciar {
   padding: 10px 20px;
   border: 0px;
   border-radius: 5px;
   transition: 0.3s;
 }
-.btn-reiniciar:hover{
+.btn-reiniciar:hover {
   background-color: antiquewhite;
   transform: scale(1.05);
   transition: 0.3s;
   cursor: pointer;
 }
 
+/*/////////////////////////////
+FOOTER
+////////////////////////////*/
 
 footer {
+  background-color: rgba(50, 50, 50, 0.2);
   text-align: center;
+  padding: 20px 0px;
+  margin: 10px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
 }
-a{
+a {
   text-decoration: none;
   color: white;
   font-weight: bold;
 }
-a:hover{
+a:hover {
   color: gainsboro;
   transition: 0.5s;
 }
 
+.desarrollo {
+  font-size: small;
+}
+.version {
+  font-size: x-small;
+  margin: 0px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0px;
+}
+
+/*///////////////////////////////////////////
+MEDIA QUERYS
+///////////////////////////////////////////*/
 @media screen and (max-width: 500px) {
   .ficha {
     height: 60px;
     width: 60px;
     font-size: 24px;
+  }
+  .estadisticas {
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 10px;
+    vertical-align: middle;
+    width: 85px;
+    text-align: center;
+  }
+  .timer {
+    width: 115px;
+    font-weight: bold;
+    font-size: 14px;
+  }
 }

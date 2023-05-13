@@ -8,7 +8,7 @@ let movimientos = 0;
 let aciertos = 0;
 let juegoHabilitado = true;
 let temporizador = false;
-let timer = 59;
+let timer = 0;
 let tiempoInicial = timer;
 let tiempoRegresivo = null;
 
@@ -16,6 +16,7 @@ let tiempoRegresivo = null;
 let mostrarMovimientos = document.getElementById("movimientos");
 let mostrarAciertos = document.getElementById("aciertos");
 let mostrarTiempo = document.getElementById("t-restante");
+let mensajeGanador = document.getElementById("msj-ganador")
 
 // Generar numeros aleatorios para fichas
 let numeros = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -24,18 +25,30 @@ numeros = numeros.sort(() => {
 });
 console.log(numeros);
 
-let milisegundos = 99;
+let milisegundos = 0;
+let tiempoMostrar = null;
 function contarTiempo() {
    tiempoRegresivo = setInterval(() => {
-    milisegundos--;
+    milisegundos++;
     
     //if(milisegundos % 10 == 0) timer--;
-    if(milisegundos === 0) {
-      milisegundos = 99;
-      timer--
+    if(milisegundos === 99) {
+      milisegundos = 0;
+      timer++
     }//timer--;
-    mostrarTiempo.innerHTML = "Tiempo: " + timer + ","+milisegundos;
-    if (timer == 0) {
+    tiempoMostrar = timer+milisegundos/100;
+    mostrarTiempo.innerHTML = "Tiempo: " + Number(tiempoMostrar).toFixed(2);
+    if(timer>20 && timer<45){
+        mostrarTiempo.classList.add("ultimos20")
+        
+        
+    }else if(timer > 45){
+        mostrarTiempo.classList.remove("ultimos20")
+        mostrarTiempo.classList.add("ultimos10")
+    } 
+    
+    
+    if (timer == 60 && milisegundos == 0) {
       clearInterval(tiempoRegresivo);
       bloquearTarjetas();
     }
@@ -47,7 +60,7 @@ function bloquearTarjetas() {
     let tarjetaBloqueada = document.getElementById(i);
     (tarjetaBloqueada.innerHTML = numeros[i]),
       (tarjetaBloqueada.disabled = true);
-    mostrarTiempo.innerHTML = "Perdiste se acabo el tiempo 😔";
+   // mostrarTiempo.innerHTML = "Perdiste se acabo el tiempo 😔";
   }
 }
 
@@ -68,6 +81,7 @@ function destapar(id) {
 
       //desabilitar boton
       tarjeta1.disabled = true;
+      tarjeta1.classList.add("fichaSeleccionada");
     } else if (tarjetasDestapadas == 2) {
       tarjeta2 = document.getElementById(id);
       segundoResultado = numeros[id];
@@ -75,7 +89,7 @@ function destapar(id) {
 
       //desabilitar boton
       tarjeta2.disabled = true;
-
+      tarjeta2.classList.add("fichaSeleccionada");
       //incrementar movimientos
       movimientos++;
       mostrarMovimientos.innerHTML = "Movimientos: " + movimientos;
@@ -88,11 +102,12 @@ function destapar(id) {
         aciertos++;
         mostrarAciertos.innerHTML = "Aciertos : " + aciertos;
         if (aciertos == 8) {
-          mostrarAciertos.innerHTML = "Aciertos: " + aciertos + " 😆";
-          mostrarMovimientos.innerHTML = "Movimientos: " + movimientos + " 😁";
-          mostrarTiempo.innerHTML = `GANASTE, Solo tardaste ${Number(tiempoInicial - (timer+(milisegundos/100))).toFixed(2)
-            
-          } segundos`;
+          mensajeGanador.style.display = 'block';
+          mostrarAciertos.innerHTML = "Aciertos: " + aciertos;
+          mostrarMovimientos.innerHTML = "Movimientos: " + movimientos;
+          mostrarTiempo.innerHTML = `Tiempo: ${Number((timer+(milisegundos/100))).toFixed(2)
+          }`;
+          
           clearInterval(tiempoRegresivo);
         }
         
@@ -121,7 +136,8 @@ function destapar(id) {
           tarjeta1.disabled = false;
           tarjeta2.innerHTML = null;
           tarjeta2.disabled = false;
-          
+          tarjeta1.classList.remove("fichaSeleccionada");
+          tarjeta2.classList.remove("fichaSeleccionada");
 
           
           tarjeta1.classList.remove("fichaIncorrecta")
