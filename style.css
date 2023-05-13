@@ -13,13 +13,13 @@ body {
   color: white;
   font-family: sans-serif;
 }
-main {
+.principal {
   justify-content: center;
-  margin: 50px auto;
   display: flex;
   align-items: center;
-  column-gap: 20px;
+  gap: 20px;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 .section1 {
   background-color: rgba(255, 255, 255, 0.5);
@@ -77,6 +77,42 @@ h1 {
   box-sizing: border-box;
 }
 
+.botonera{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-reiniciar{
+  padding: 10px 20px;
+  border: 0px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.btn-reiniciar:hover{
+  background-color: antiquewhite;
+  transform: scale(1.05);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+
 footer {
   text-align: center;
+}
+a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+a:hover{
+  color: gainsboro;
+  transition: 0.5s;
+}
+
+@media screen and (max-width: 500px) {
+  .ficha {
+    height: 60px;
+    width: 60px;
+    font-size: 24px;
 }

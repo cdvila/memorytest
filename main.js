@@ -8,7 +8,7 @@ let movimientos = 0;
 let aciertos = 0;
 let juegoHabilitado = true;
 let temporizador = false;
-let timer = 60;
+let timer = 59;
 let tiempoInicial = timer;
 let tiempoRegresivo = null;
 
@@ -17,22 +17,29 @@ let mostrarMovimientos = document.getElementById("movimientos");
 let mostrarAciertos = document.getElementById("aciertos");
 let mostrarTiempo = document.getElementById("t-restante");
 
-// Generar numeros aleatorios
+// Generar numeros aleatorios para fichas
 let numeros = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
 numeros = numeros.sort(() => {
   return Math.random() - 0.5;
 });
 console.log(numeros);
 
+let milisegundos = 99;
 function contarTiempo() {
-  tiempoRegresivo = setInterval(() => {
-    timer--;
-    mostrarTiempo.innerHTML = "Tiempo: " + timer;
+   tiempoRegresivo = setInterval(() => {
+    milisegundos--;
+    
+    //if(milisegundos % 10 == 0) timer--;
+    if(milisegundos === 0) {
+      milisegundos = 99;
+      timer--
+    }//timer--;
+    mostrarTiempo.innerHTML = "Tiempo: " + timer + ","+milisegundos;
     if (timer == 0) {
       clearInterval(tiempoRegresivo);
       bloquearTarjetas();
     }
-  }, 1000);
+  }, 10);
 }
 
 function bloquearTarjetas() {
@@ -83,8 +90,8 @@ function destapar(id) {
         if (aciertos == 8) {
           mostrarAciertos.innerHTML = "Aciertos: " + aciertos + " 😆";
           mostrarMovimientos.innerHTML = "Movimientos: " + movimientos + " 😁";
-          mostrarTiempo.innerHTML = `GANASTE, Solo tardaste ${
-            tiempoInicial - timer
+          mostrarTiempo.innerHTML = `GANASTE, Solo tardaste ${Number(tiempoInicial - (timer+(milisegundos/100))).toFixed(2)
+            
           } segundos`;
           clearInterval(tiempoRegresivo);
         }
@@ -125,4 +132,9 @@ function destapar(id) {
         destapar(id)
     }
   }
+}
+///////////////////*/ */
+
+function reiniciar(){
+  location.reload()
 }
